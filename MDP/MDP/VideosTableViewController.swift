@@ -10,7 +10,7 @@ import UIKit
 
 class VideosTableViewController: UITableViewController {
     
-    var videoArray :NSArray {
+    var videoArray : NSArray {
         didSet {
             tableView.reloadData()
         }

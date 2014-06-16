@@ -43,7 +43,7 @@ class MainTabBarController: UITabBarController {
             
             if let videosViewController = segue?.destinationViewController as? VideosTableViewController {
             
-                videosViewController.videoArray =
+                videosViewController.videoArray = videoArray
             
             }
             

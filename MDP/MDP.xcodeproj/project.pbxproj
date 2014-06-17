@@ -14,7 +14,7 @@
 		D624F7C4194AF421006676E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D624F7C3194AF421006676E8 /* Images.xcassets */; };
 		D624F7D0194AF421006676E8 /* MDPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D624F7CF194AF421006676E8 /* MDPTests.swift */; };
 		D6D20AD4194F45E300B6F831 /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D20AD3194F45E300B6F831 /* VideosTableViewController.swift */; };
-		D6D20AD6194F4D2400B6F831 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D20AD5194F4D2400B6F831 /* MainTabBarController.swift */; };
+		FD1A889E194F8E380009633C /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A889D194F8E380009633C /* VideoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,7 @@
 		D624F7CE194AF421006676E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D624F7CF194AF421006676E8 /* MDPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDPTests.swift; sourceTree = "<group>"; };
 		D6D20AD3194F45E300B6F831 /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosTableViewController.swift; sourceTree = "<group>"; };
-		D6D20AD5194F4D2400B6F831 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		FD1A889D194F8E380009633C /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +84,8 @@
 				D624F7B8194AF421006676E8 /* Supporting Files */,
 				D624F7BA194AF421006676E8 /* AppDelegate.swift */,
 				D624F7C0194AF421006676E8 /* Main.storyboard */,
+				FD1A889D194F8E380009633C /* VideoTableViewCell.swift */,
 				D6D20AD3194F45E300B6F831 /* VideosTableViewController.swift */,
-				D6D20AD5194F4D2400B6F831 /* MainTabBarController.swift */,
 			);
 			path = MDP;
 			sourceTree = "<group>";
@@ -219,9 +219,9 @@
 			files = (
 				D624F7BF194AF421006676E8 /* SecondViewController.swift in Sources */,
 				D624F7BB194AF421006676E8 /* AppDelegate.swift in Sources */,
-				D6D20AD6194F4D2400B6F831 /* MainTabBarController.swift in Sources */,
 				D624F7BD194AF421006676E8 /* FirstViewController.swift in Sources */,
 				D6D20AD4194F45E300B6F831 /* VideosTableViewController.swift in Sources */,
+				FD1A889E194F8E380009633C /* VideoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,9 +339,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MDP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,9 +353,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MDP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

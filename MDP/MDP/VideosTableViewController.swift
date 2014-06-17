@@ -7,108 +7,73 @@
 //
 
 import UIKit
+import MediaPlayer
 
-class VideosTableViewController: UITableViewController {
-    
-    var videoArray : NSArray {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    
-    init(style: UITableViewStyle) {
-        videoArray = NSArray()
-        super.init(style: style)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // #pragma mark - Table view data source
-    
-    override func numberOfSectionsInTableView(tableView: UITableView?) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return videoArray.count
-    }
-    
-    
-    override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell? {
-    let cell = tableView?.dequeueReusableCellWithIdentifier("VideoCellIdentifierIPad") as UITableViewCell
-    
-        
-        
-    // Configure the cell...
-    
-    return cell
-    }
-    
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView?, canEditRowAtIndexPath indexPath: NSIndexPath?) -> Bool {
-    // Return NO if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView?, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath?) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView?, moveRowAtIndexPath fromIndexPath: NSIndexPath?, toIndexPath: NSIndexPath?) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView?, canMoveRowAtIndexPath indexPath: NSIndexPath?) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-   
-    // #pragma mark - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        
-        
-        
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
+class VideosTableViewController: UITableViewController , VideoTableViewCellDelegate{
   
+  var videoArray : NSArray! {
+  get {
+    return ["0BjiGAtxeO4", "smypzRF-W6M", "exxJANsGzzk", "yqYOcjB88Ag"]
+  }
+  }
+  
+  override func numberOfSectionsInTableView(tableView: UITableView?) -> Int
+  {
+    return 1
+  }
+  
+  override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int
+  {
+    return videoArray.count
+  }
+  
+  override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell?
+  {
+    let cell = tableView?.dequeueReusableCellWithIdentifier("VideoCellIdentifierIPad") as VideoTableViewCell
     
+    let row = indexPath?.row
+    
+    if let identifier: NSString = videoArray[row!] as? NSString {
+    
+    cell.path = "http://www.youtube.com/embed/" + identifier
+      
+      cell.delegate = self
+    }
+    return cell
+  }
+  
+  func playVideoTapped(sender: AnyObject)
+  {
+    if let cell = sender as? VideoTableViewCell {
+      
+      
+      playVideo(cell.path!)
+      
+    }
+  }
+  
+  var streamPlayer: MPMoviePlayerController!
+  
+  func playVideo(path: NSString)
+  {
+    
+    
+    
+    let url = NSURL(string: "http://www.thumbafon.com/code_examples/video/segment_example/prog_index.m3u8");
+    
+    streamPlayer = MPMoviePlayerController(contentURL: url)
+    
+  //  streamPlayer.controlStyle = MPMovieControlStyle.Fullscreen
+    
+    streamPlayer.view.frame = CGRectMake(0,0,500,500);
+    
+    println(streamPlayer.view.frame)
+    
+    streamPlayer.setFullscreen(true, animated: true)
+    
+    self.view.addSubview(streamPlayer.view)
+    
+    streamPlayer.play()
+  }
+  
 }
